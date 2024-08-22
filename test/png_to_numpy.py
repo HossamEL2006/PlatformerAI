@@ -1,6 +1,7 @@
 from PIL import Image  # pip install pillow
 import numpy as np
 import pygame
+import os
 from numpy_to_pygame import ndarray_to_surface
 
 
@@ -14,7 +15,7 @@ def png_to_ndarray(png_path):
     return img_array
 
 
-IMAGE_PATH = 'assets/test/800x600_test.png'
+IMAGE_PATH = os.path.join(os.path.dirname(__file__), '../assets/test/800x600_test.png')
 IMAGE_ARRAY = png_to_ndarray(IMAGE_PATH)
 WINDOW = pygame.display.set_mode((800, 600))
 
