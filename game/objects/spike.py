@@ -1,6 +1,6 @@
 from math import sqrt
-from object import Object
 import pygame
+from .object import Object
 
 
 class Spike(Object):

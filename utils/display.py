@@ -1,7 +1,8 @@
+import os
 from PIL import Image  # pip install pillow
 import numpy as np
 import pygame
-import os
+
 
 
 def png_to_ndarray(png_path: str):
