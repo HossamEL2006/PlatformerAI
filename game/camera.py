@@ -84,7 +84,9 @@ class Camera:
                       attribute (a Pygame surface representing its visual appearance) and `x` and
                       `y` attributes representing its position in the game world.
         """
-        scaled_image = pygame.transform.scale(obj.sprite, (int(self.tile_size),)*2)
+        scaled_image = pygame.transform.scale(obj.sprite,
+                                              (int(self.tile_size)*obj.w,
+                                               int(self.tile_size)*obj.h))
         self.surface.blit(scaled_image,
                           (self.tile_size * (obj.x - self.x),
                            self.tile_size * (obj.y - self.y)))

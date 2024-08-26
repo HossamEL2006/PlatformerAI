@@ -3,6 +3,8 @@ import pygame
 from camera import Camera
 from environment import Environment
 from objects.brick import Brick
+from objects.platform import Platform
+
 
 # Constants for the window dimensions
 W, H = 640, 480
@@ -19,7 +21,6 @@ class Game:
         Initialize the game environment, including setting up the window, camera, environment,
         clock, and the running state of the game.
         """
-        pygame.init()
         self.window = pygame.display.set_mode((W, H))  # Initialize the game window
         self.camera = Camera(-3, -5, W, H)  # Initialize the camera with position and window size
         self.camera.setup_by_width(20)  # Setup the camera zoom or scale based on width
@@ -27,6 +28,8 @@ class Game:
         self.environment = Environment()  # Initialize the environment to hold game objects
         self.clock = pygame.time.Clock()  # Setup the clock to control the game frame rate
         self.running = True  # Flag to indicate whether the game loop should keep running
+
+        Platform.load_sprites()
 
         self.load_test_level()  # Load the test level every frame (This is problematic)
 
@@ -49,6 +52,11 @@ class Game:
 
         self.environment.add_object(Brick(12, 4))
         self.environment.add_object(Brick(15, 4))
+
+        # Add platforms to the environment at specific positions
+        self.environment.add_object(Platform(1, 3, 4))
+        self.environment.add_object(Platform(4, 6, 5))
+        self.environment.add_object(Platform(4, -1, 4))
 
     def loop(self):
         """
